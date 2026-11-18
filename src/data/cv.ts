@@ -31,7 +31,7 @@ export const profile = {
 
 // Leave a value empty ("") to hide that button.
 export const contact = {
-  email: "antoine.lebeau@gmail.com",
+  email: "", // kept off the site on purpose (spam) — LinkedIn is the contact channel
   linkedin: "https://www.linkedin.com/in/antoine-lebeau-34349153/",
   pdf: { fr: "/Antoine_Lebeau_CV_FR.pdf", en: "/Antoine_Lebeau_CV_EN.pdf" } as T,
 };
@@ -114,13 +114,13 @@ export const experience: Job[] = [
     ],
   },
   {
-    company: { fr: "Bootcamp développement web", en: "Web development bootcamp" },
-    logo: "</>",
+    company: "Le Wagon",
+    logo: "LW",
     location: PARIS,
     tags: ["JavaScript", "Ruby on Rails", "HTML / CSS"],
     roles: [
       {
-        title: { fr: "Formation intensive en développement web", en: "Intensive web development bootcamp" },
+        title: { fr: "Bootcamp développement web", en: "Web Development Bootcamp" },
         dates: { fr: "Janv. 2024 — Mai 2024", en: "Jan 2024 — May 2024" },
         bullets: {
           fr: [

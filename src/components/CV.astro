@@ -177,7 +177,9 @@ const year = new Date().getFullYear();
           </a>
         )}
         {contact.linkedin && (
-          <a class="btn btn-ghost" href={contact.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class={`btn ${contact.email ? "btn-ghost" : "btn-primary"}`} href={contact.linkedin} target="_blank" rel="noopener">
+            {lang === "fr" ? "Me contacter sur LinkedIn" : "Message me on LinkedIn"} ↗
+          </a>
         )}
         <a class="btn btn-ghost" href={t(contact.pdf, lang)} download>{t(ui.downloadCv, lang)} (PDF)</a>
       </div>
