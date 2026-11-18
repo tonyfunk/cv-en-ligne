@@ -1,0 +1,56 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
+import "../styles/global.css";
+import { profile, t, type Lang } from "../data/cv";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+
+const title = `${profile.name} — ${t(profile.role, lang)}`;
+const description = t(profile.headline, lang);
+const site = Astro.site ?? new URL(Astro.url.origin);
+const canonical = new URL(lang === "fr" ? "/" : "/en/", site).href;
+const alternate = new URL(lang === "fr" ? "/en/" : "/", site).href;
+const ogImage = new URL("/og.jpg", site).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang={lang} href={canonical} />
+    <link rel="alternate" hreflang={lang === "fr" ? "en" : "fr"} href={alternate} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0a0a0c" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === "fr" ? "fr_FR" : "en_GB"} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: profile.name,
+      jobTitle: t(profile.role, lang),
+      address: { "@type": "PostalAddress", addressLocality: "Paris", addressCountry: "FR" },
+      alumniOf: "EDHEC Business School",
+      image: new URL(profile.photo, site).href,
+      url: canonical,
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
