@@ -31,8 +31,8 @@ export const profile = {
 
 // Leave a value empty ("") to hide that button.
 export const contact = {
-  email: "", // e.g. "prenom.nom@gmail.com"
-  linkedin: "", // e.g. "https://www.linkedin.com/in/your-handle/"
+  email: "antoine.lebeau@gmail.com",
+  linkedin: "https://www.linkedin.com/in/antoine-lebeau-34349153/",
   pdf: { fr: "/Antoine_Lebeau_CV_FR.pdf", en: "/Antoine_Lebeau_CV_EN.pdf" } as T,
 };
 
